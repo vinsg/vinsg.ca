@@ -1,0 +1,9 @@
+---
+import { Icon } from 'astro-icon'
+const {link, text, name} = Astro.props;
+
+---
+<a href={link} class="rounded-lg py-1 px-1.5 flex-row align-middle flex shrink-0 gap-2 hover:bg-slate-700">
+<Icon name={name} class="fill-white h-6 w-6"/>
+{text}
+</a>
