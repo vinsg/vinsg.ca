@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 layout: ../../layouts/BaseBlog.astro
+=======
+layout: ./src/layouts/BaseBlog.astro
+>>>>>>> 86524d65cc57d980f4b3cd1df7ada3adb77e8853
 title: "Astro v1 Launch!"
 author: "Matthew Phillips"
 date: "09 Aug 2022"
