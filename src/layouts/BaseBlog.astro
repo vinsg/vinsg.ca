@@ -1,0 +1,33 @@
+---
+import BlogTag from "../components/BlogTag.astro";
+import NavBar from "../components/NavBar.astro";
+import Section from "../components/Section.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="bg-slate-900 text-gray-100">
+    <NavBar />
+    <Section>
+      <h1 class="text-center text-3xl font-bold">{frontmatter.title}</h1>
+      <div class="mt-2 text-center text-sm text-gray-400">
+        By {frontmatter.author} on {frontmatter.date}
+      </div>
+      <ul class="flex flex-row justify-center pt-3 gap-4">
+        {frontmatter.tags.map(item => <BlogTag id={item} text={item}/>)}
+      </ul>
+      <div class="prose prose-invert mt-8 prose-img:rounded-lg mx-auto max-w-prose">
+        <slot />
+      </div>
+    </Section>
+  </body>
+</html>
