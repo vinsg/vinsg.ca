@@ -1,5 +1,23 @@
 ---
-const {text} = Astro.props;
+const {text, color} = Astro.props;
+
+export const ColorTags = {
+  EMERALD: 'EMERALD',
+  PURPLE: 'PURPLE',
+  AMBER: 'AMBER',
+  STONE: 'STONE',
+  RED: 'RED',
+  CYAN: 'CYAN',
+}
+
+const colorToClassMap = {
+    [ColorTags.EMERALD]: 'bg-emerald-400 text-emerald-900',
+    [ColorTags.PURPLE]: 'bg-purple-400 text-purple-900',
+    [ColorTags.AMBER]: 'bg-amber-400 text-amber-900',
+    [ColorTags.STONE]: 'bg-stone-400 text-stone-900',
+    [ColorTags.RED]: 'bg-red-400 text-red-900',
+    [ColorTags.CYAN]: 'bg-cyan-400 text-cyan-900',
+};
 
 ---
-<div class="rounded-md px-2 py-1 text-xs font-semibold bg-emerald-400 text-emerald-900">{text}</div>
+<div class={`rounded-md px-2 py-1 text-xs font-semibold ${colorToClassMap[color]}`}>{text}</div>
