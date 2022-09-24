@@ -1,5 +1,5 @@
 ---
-import BlogTag from "../components/BlogTag.astro";
+import BlogTag, { ColorTags } from "../components/BlogTag.astro";
 import NavBar from "../components/NavBar.astro";
 import Section from "../components/Section.astro";
 
@@ -23,7 +23,7 @@ const { frontmatter } = Astro.props;
         By {frontmatter.author} on {frontmatter.date}
       </div>
       <ul class="flex flex-row justify-center pt-3 gap-4">
-        {frontmatter.tags.map(item => <BlogTag id={item} text={item}/>)}
+        {frontmatter.tags.map(item => <BlogTag id={item} text={item} color={ColorTags.EMERALD}/>)}
       </ul>
       <div class="prose prose-invert mt-8 prose-img:rounded-lg mx-auto max-w-prose">
         <slot />

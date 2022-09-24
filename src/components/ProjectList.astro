@@ -1,0 +1,21 @@
+---
+import BlogTag, { ColorTags } from "./BlogTag.astro";
+import Section from "./Section.astro";
+
+---
+
+<Section>
+    <h2 class="text-2xl">Projects</h2>
+    <ul class="mt-4 space-y-4">
+      <li class="flex flex-wrap items-center gap-x-2">
+        <p><a href="https://github.com/vinsg/edit-owners" class="font-mono inline-block line-clamp-1 underline hover:decoration-purple-500 hover:underline-offset-2">Edit-owners:</a>&#8194; A cli tool to manage GitHub CODEOWNERS files</p>
+        <BlogTag text="Kotlin" color={ColorTags.PURPLE} />
+        <BlogTag text="Dev Tool" color={ColorTags.STONE} />
+      </li>
+      <li class="flex flex-wrap items-center gap-x-2">
+        <p><a href="https://github.com/vinsg/vinsg.ca" class="font-mono inline-block line-clamp-1 underline hover:decoration-purple-500 hover:underline-offset-2">Vinsg.ca:</a>&#8194; This personal website with my writings</p>
+        <BlogTag text="Typescript" color={ColorTags.CYAN} />
+        <BlogTag text="Astro.js" color={ColorTags.RED} />
+      </li>
+    </ul>
+</Section>
