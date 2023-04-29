@@ -35,7 +35,7 @@ Notes: Typical java style code. Code is incorrect and buggy
 ---
 
 But they implement the `closable` interface
-![closable](test/closable.png)
+![closable](/assets/lectures/test/closable.png)
 
 ---
 
