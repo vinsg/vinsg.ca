@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import MarkdownSlide from "../../components/MarkdownSlide.astro";
+
+export async function getStaticPaths() {
+  const lecturesEntries = await getCollection("lectures");
+  return lecturesEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+---
+
+<Layout title={entry.title}>
+  <main class="reveal">
+    <div class="slides">
+      <MarkdownSlide content={entry.body} />
+    </div>
+  </main>
+</Layout>
+
+<style lang="css">
+    :root {
+      --r-inline-code-color: #e5e5e5;
+    }
+
+    .inline-code {
+      color: var(--r-inline-code-color);
+    }
+</style>

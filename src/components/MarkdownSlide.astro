@@ -1,0 +1,14 @@
+---
+interface Props {
+  animate?: boolean;
+  content: String;
+}
+
+const { animate = true , content} = Astro.props;
+---
+
+<section data-markdown>
+  <textarea data-template>
+    {content}
+  </textarea>
+</section>
