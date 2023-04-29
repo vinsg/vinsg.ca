@@ -1,0 +1,53 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+  </head>
+
+  <body class="">
+    <slot />
+    <script>
+      import Reveal from "reveal.js";
+      import RevealMarkdown from "reveal.js/plugin/markdown/markdown.js";
+      import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
+      import RevealZoom from "reveal.js/plugin/zoom/zoom.js";
+      import RevealNotes from "reveal.js/plugin/notes/notes.js";
+      import RevealMath from "reveal.js/plugin/math/math.js";
+
+
+      Reveal.initialize({
+        transition: "none",
+        history: true,
+        controls: false,
+        autoAnimateDuration: 0.5,
+        autoAnimateEasing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        plugins: [ 
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+      ]
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import "reveal.js/dist/reveal.css";
+  @import "reveal.js/dist/theme/dracula.css";
+  @import "reveal.js/plugin/highlight/monokai.css";
+</style>
