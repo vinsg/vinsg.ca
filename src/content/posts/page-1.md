@@ -1,8 +1,7 @@
 ---
-layout: ../../layouts/BaseBlog.astro
 title: "Astro v1 Launch!"
-author: "Matthew Phillips"
-date: "09 Aug 2022"
+author: "Vincent Salamanca-Gagnon"
+date: 2022-07-01
 tags: ['Kotlin', 'Astro', 'Ktor']
 draft: true
 ---

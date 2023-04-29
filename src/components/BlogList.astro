@@ -1,6 +1,7 @@
 ---
+import { getCollection } from "astro:content";
 import Section from "./Section.astro";
-const posts = await Astro.glob("../pages/post/*.md").then((it) => it.filter((post) => !post.frontmatter.draft))
+const posts = await getCollection("posts").then((it) => it.filter((post) => !post.data.draft))
 const visible = posts.length > 0
 
 ---
@@ -9,9 +10,9 @@ const visible = posts.length > 0
     <h2 class="text-2xl">Posts</h2>
     { visible ? <ul class="mt-4">
       {posts.map((post) => <li class="flex flex-wrap items-center gap-x-2">
-        <time {new Date(post.frontmatter.date).toISOString()} class="min-w-[120px] text-gray-500">{post.frontmatter.date}</time>
+        <time {new Date(post.data.date.toDateString())} class="min-w-[120px] text-gray-500">{post.data.date.toDateString()}</time>
         
-        <a href={post.url} class="inline-block cactus-link line-clamp-1 hover:underline">{post.frontmatter.title}</a>
+        <a href={"/posts/" + post.slug} class="inline-block cactus-link line-clamp-1 hover:underline">{post.data.title}</a>
         
         </li>)}
     </ul>
