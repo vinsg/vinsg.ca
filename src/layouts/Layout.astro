@@ -17,7 +17,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="">
+  <body class="bg-slate-900">
     <slot />
     <script>
       import Reveal from "reveal.js";
@@ -49,5 +49,5 @@ const { title } = Astro.props;
 <style is:global>
   @import "reveal.js/dist/reveal.css";
   @import "reveal.js/dist/theme/dracula.css";
-  @import "reveal.js/plugin/highlight/monokai.css";
+  @import "@catppuccin/highlightjs/css/catppuccin-mocha.css";
 </style>

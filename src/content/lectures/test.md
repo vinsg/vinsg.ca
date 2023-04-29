@@ -1,10 +1,7 @@
 ---
 title: Using ressources
-theme: blood
-revealOptions:
-  transition: 'none'
-  controls: false
-  progress: true
+date: 2022-07-01
+draft: true
 ---
 ## Handling resources with Use
 
@@ -12,10 +9,10 @@ revealOptions:
 
 Resources in the Kotlin/JVM standard library
 
-- FileReader
-- java.sql.Connection
-- InputStream
-- etc.
+- FileReader <!-- .element: class="fragment" -->.
+- java.sql.Connection <!-- .element: class="fragment" -->.
+- InputStream <!-- .element: class="fragment" -->.
+- etc. <!-- .element: class="fragment" -->.
 
 Notes: Ressources in the Kotlin/JVM sdt library need to be managed
 
@@ -96,6 +93,10 @@ countCharInFileException("file.txt")
 	.onFailure { println(it.message) }
 ```
 Notes: Example usage
+
+---
+
+<iframe src="https://link.excalidraw.com/readonly/5585TndcayrniXalBa7h?darkMode=true" width="100%" height="100%" style="border: none;"></iframe>
 
 ---
 ### Reference

@@ -17,7 +17,9 @@ const postsCollection = defineCollection({
 });
 const lecturesCollection = defineCollection({
   schema: z.object({
-    title: z.string()
+    title: z.string(),
+    date: z.date(),
+    draft: z.boolean().optional()
   })
 });
 
