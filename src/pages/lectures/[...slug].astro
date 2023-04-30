@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<Layout title={entry.title}>
+<Layout title={entry.title} description={entry.description} slug={entry.slug} date={entry.date}>
   <main class="reveal">
     <div class="slides">
       <MarkdownSlide content={entry.body} animate={false}/>

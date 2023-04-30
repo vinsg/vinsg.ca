@@ -2,14 +2,13 @@
 title: Graphql introduction
 description: Introduction to Graphql and Spring Boot support.
 date: 2022-07-01
-draft: true
+draft: false
 ---
 
 ## Introduction to Graphql
 
 ![graphql logo](/assets/lectures/graphql-intro/graphql-logo.png) <!-- .element: class="r-stretch" width="20%" style="margin:auto"-->
 
-press space to continue <!-- .element: class="pt-10 text-base text-slate-300 animate-pulse" -->
 
 Notes:
 By Vincent Salamanca-Gagnon

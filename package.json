@@ -22,6 +22,7 @@
   "dependencies": {
     "@types/react": "^18.0.17",
     "astro-icon": "^0.7.3",
+    "astro-seo": "^0.7.2",
     "reveal.js": "^4.5.0"
   }
 }

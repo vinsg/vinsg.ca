@@ -1,14 +1,51 @@
 ---
+import { SEO } from "astro-seo";
+
 export interface Props {
-  title: string;
+  title: string,
+  description: string,
+  date: string,
+  slug: string
 }
 
-const { title } = Astro.props;
+const { title, description, date, slug } = Astro.props;
+
+const baseUrl = "https://vinsg.ca";
+const ogImageUrl = `\${baseUrl}/lectures/\${slug}/intro-graphql-og.png`;
+const ogArticleUrl = `\${baseUrl}/lectures/\${slug}`;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <SEO
+    title={title}
+    description="A heavily optimized description full of well-researched keywords."
+    openGraph={{
+      basic: {
+        title: "A Very Descriptive Title",
+        type: "A type.",
+        image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+      }
+    }}
+    twitter={{
+      creator: "@jonasmerlins1"
+    }}
+    extend={{
+      // extending the default link tags
+      link: [{ rel: "icon", href: "/favicon.ico" }],
+      // extending the default meta tags
+      meta: [
+        {
+          name: "twitter:image",
+          content: ogImageUrl,
+        },
+        { name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
+        { name: "twitter:description", content: "Agent" },
+      ],
+    }}
+    />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
