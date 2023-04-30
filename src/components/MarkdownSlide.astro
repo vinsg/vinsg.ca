@@ -7,7 +7,7 @@ interface Props {
 const { animate = true , content} = Astro.props;
 ---
 
-<section data-markdown>
+<section data-markdown data-separator-vertical="^--" data-auto-animate={animate}>
   <textarea data-template>
     {content}
   </textarea>

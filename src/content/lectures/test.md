@@ -1,10 +1,16 @@
 ---
 title: Using ressources
+description: test lecture for reference.
 date: 2022-07-01
 draft: true
 ---
 ## Handling resources with Use
 
+---
+<section data-background-video="https://static.slid.es/site/homepage/v1/homepage-video-editor.mp4" 
+          data-background-video-loop data-background-video-muted>
+  <h2>Video</h2>
+</section>
 ---
 
 Resources in the Kotlin/JVM standard library
@@ -103,6 +109,10 @@ Notes: Example usage
 
 - `Effective Kotlin` by Marcin Moskala
 - Kotlin Idoms: [kotlinlang.org/docs/idioms.html](https://kotlinlang.org/docs/idioms.html#java-7-s-try-with-resources)
+
+---
+
+<!-- .slide: data-background-image="image.png" -->
 
 ---
 

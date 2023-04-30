@@ -19,6 +19,7 @@ const lecturesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
+    description: z.string(),
     draft: z.boolean().optional()
   })
 });
