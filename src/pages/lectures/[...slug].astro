@@ -16,7 +16,7 @@ const { entry } = Astro.props;
 <Layout title={entry.title}>
   <main class="reveal">
     <div class="slides">
-      <MarkdownSlide content={entry.body} />
+      <MarkdownSlide content={entry.body} animate={false}/>
     </div>
   </main>
 </Layout>
