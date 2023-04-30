@@ -1,5 +1,6 @@
 ---
 title: Using ressources
+description: test lecture for reference.
 date: 2022-07-01
 draft: true
 ---
