@@ -2,7 +2,7 @@
 title: Graphql introduction
 description: Introduction to Graphql and Spring Boot support.
 date: 2022-07-01
-draft: true
+draft: false
 ---
 
 ## Introduction to Graphql
@@ -246,6 +246,10 @@ Notes:
 - Graphql: the documentary is a great video to learn more about the history of GraphQL
 - Apollo client is a great client library for GraphQL, the tutorial is a great strating point
 - Spring for GraphQL is the official documentation for the Spring Boot integration
+
+---
+
+# Questions?
 
 ---
 
