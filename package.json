@@ -10,18 +10,18 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/react": "^2.1.1",
-    "@astrojs/tailwind": "^3.1.1",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/tailwind": "^5.1.0",
     "@catppuccin/highlightjs": "^0.1.2",
     "@tailwindcss/typography": "^0.5.7",
     "@types/reveal.js": "^4.4.2",
-    "astro": "^2.3.2",
+    "astro": "^4.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@types/react": "^18.0.17",
-    "astro-icon": "^0.7.3",
+    "astro-icon": "^1.1.0",
     "reveal.js": "^4.5.0"
   }
 }
