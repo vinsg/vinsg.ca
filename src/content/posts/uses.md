@@ -22,6 +22,7 @@ This is a non-exhaustive list of everything I am currently using.
 - [Slack](https://slack.com/) use mainly for work.
 - [Ollama](https://ollama.ai/) is by far the easiest way to run LLM models locally.
 - [1Password](https://1password.com/) for password management.
+- [Hyperkey](https://hyperkey.app/) for an extra key on the keyboard
 
 ## CLI & Tools
 - [DuckDB](https://duckdb.org/) a useful in-process analytical database.
