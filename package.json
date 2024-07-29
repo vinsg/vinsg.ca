@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/react": "^3.0.9",
+    "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@catppuccin/highlightjs": "^0.1.2",
     "@tailwindcss/typography": "^0.5.7",
     "@types/reveal.js": "^4.4.2",
-    "astro": "^4.3.2",
+    "astro": "^4.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
