@@ -4,8 +4,8 @@ import Layout from "../../layouts/Layout.astro";
 import MarkdownSlide from "../../components/MarkdownSlide.astro";
 
 export async function getStaticPaths() {
-  const lecturesEntries = await getCollection("lectures");
-  return lecturesEntries.map((entry) => ({
+  const slidesEntries = await getCollection("slides");
+  return slidesEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));

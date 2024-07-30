@@ -1,15 +1,11 @@
 ---
-title: Graphql introduction
-description: Introduction to Graphql and Spring Boot support.
-date: 2023-07-01
-draft: false
+title: Local LLM
+description: Running Local Code LLM for no profit.
+date: 2024-02-12
+draft: true
 ---
 
-## Introduction to Graphql
-
-![graphql logo](/assets/lectures/graphql-intro/graphql-logo.png) <!-- .element: class="r-stretch" width="20%" style="margin:auto"-->
-
-press space to continue <!-- .element: class="pt-10 text-base text-slate-300 animate-pulse" -->
+## Running Local Code LLM for no profit.
 
 Notes:
 By Vincent Salamanca-Gagnon

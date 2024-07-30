@@ -15,7 +15,7 @@ const postsCollection = defineCollection({
       draft: z.boolean().optional()
     })
 });
-const lecturesCollection = defineCollection({
+const slidesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -27,5 +27,5 @@ const lecturesCollection = defineCollection({
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   posts: postsCollection,
-  lectures: lecturesCollection
+  slides: slidesCollection
 };
