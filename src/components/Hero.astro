@@ -5,38 +5,29 @@ import SocialBtn from "./SocialBtn.astro";
 
 <Section>
     <div
-            class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-12 lg:gap-x-24 mx-auto"
+            class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-12 lg:gap-x-24 max-w-2xl"
     >
         <div>
-            <h1 class="text-3xl font-bold">
-                <>Hi there, I'm Vincent Salamanca 👋</>
+            <h1 class="text-2xl font-bold">
+                <>Bonjour,</>
             </h1>
-
-            <p class="mt-6 text-xl leading-9">
-                A software developer passionate about user interfaces and how we build compelling user experiences through technologies.
-                I'm an avid note-taker, motorcyclist, horror genre enthusiast, and a huge fan of Heroes of Might and Magic III.
+            <p class="mt-6 text-l leading-7">
+                My name is Vincent, <em>aka vinsg</em>. I love building user interfaces and everything related to them. 
+                I take a lot of notes in Obsidian, ride a motorcycle and play horror games in my spare time. I speak English and French fluently.
             </p>
-            <p class="mt-6 text-xl leading-9">
+            <p class="mt-6 text-l leading-7">
+                I currently work as an Android Developer for a Montréal-based startup.
+            </p>
+            <p class="mt-6 text-l leading-7">
                 Feel free to take a look around my blog and contact me.
             </p>
-            <div class="flex flex-row shrink-0 flex-wrap gap-6 py-6">
+            <div class="flex flex-row shrink-0 flex-wrap gap-6 pt-6 pb-0">
                 <SocialBtn link="https://github.com/vinsg" text="GitHub" name="github"/>
                 <SocialBtn link="https://twitter.com/vinsg_" text="Twitter" name="twitter"/>
                 <SocialBtn link="https://linkedin.com/in/vincent-salamanca-gagnon-1a039ba1" text="Linkedin"
                            name="linkedin"/>
                 <SocialBtn link="mailto:contact@vinsg.ca" text="Email" name="email"/>
             </div>
-        </div>
-
-        <div class="shrink-0 py-2">
-            <img
-                    class="w-56 sm:w-64 rounded-full"
-                    src="/assets/profile-square.jpg"
-                    alt="Avatar image"
-                    loading="eager"
-                    height="64px"
-                    width="64px"
-            />
         </div>
     </div>
 </Section>
