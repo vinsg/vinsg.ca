@@ -6,14 +6,19 @@ tags: ['Productivity']
 draft: false
 ---
 
-This is a non-exhaustive list of everything I am currently using.
+This is a non-exhaustive list of everything I currently use.
+## Programming Languages
+- Kotlin
+- C++
+- Java
+- Typescript / Javascript
 
-## Editor
+## Code Editor
 - [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/) is still my main editor for all things Java/Kotlin
-- [Android Studio](https://developer.android.com/studio) for well Android development.
+- [Android Studio](https://developer.android.com/studio) for Android development.
 - [Fleet](https://www.jetbrains.com/fleet/) for quick editing.
 
-## Desktop Software
+## Software / Services
 - [Raycast](https://www.raycast.com/) to control all the things on my computer.
 - [JetBrains Toolbox](https://www.jetbrains.com/lp/toolbox/) to manage all my JetBrains apps.
 - [Obsidian](https://obsidian.md/) for note-taking and personal knowledge base.
@@ -22,18 +27,20 @@ This is a non-exhaustive list of everything I am currently using.
 - [Slack](https://slack.com/) use mainly for work.
 - [Ollama](https://ollama.ai/) is by far the easiest way to run LLM models locally.
 - [1Password](https://1password.com/) for password management.
-- [Hyperkey](https://hyperkey.app/) for an extra key on the keyboard
+- [Hyperkey](https://hyperkey.app/) for an extra key on the keyboard.
+- ReadWise [Reader](https://readwise.io/read) for reading and RSS Feeds.
+- [PocketCasts](https://github.com/Automattic/pocket-casts-android) for podcasts.
+- [LoseIt](https://www.loseit.com/) for diet/calorie counting.
+- [ChatGPT](https://chat.openai.com/)
 
 ## CLI & Tools
-- [DuckDB](https://duckdb.org/) a useful in-process analytical database.
 - [SDKMan](https://sdkman.io/) to manage Java SDK versions
 - [Oh My Zsh](https://ohmyz.sh/) for my shell.
 - [Homebrew](https://brew.sh/) for package manager.
 
 ## Hardware
 - MacBook Air M2 2022, 24GB.
-- Iphone 12 White
-- Samsung Galaxy Tab A8 for Android testing.
+- Samsung Galaxy Fold 6
 - [Steam Deck OLED](https://store.steampowered.com/steamdeck) for my Factorio and Heroes of Might and Magic 3 fix.
 
 ## Desk Setup
