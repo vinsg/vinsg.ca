@@ -20,10 +20,11 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@iconify-json/ion": "^1.1.19",
     "@resvg/resvg-js": "^2.6.2",
     "@types/react": "^18.0.17",
     "@vercel/og": "^0.6.2",
-    "astro-icon": "^1.1.0",
+    "astro-icon": "^1.1.1",
     "reveal.js": "^4.5.0",
     "satori": "^0.10.14",
     "satori-html": "^0.3.2"
