@@ -15,13 +15,13 @@ const { frontmatter, slug } = Astro.props;
   <meta name="generator" content={Astro.generator} />
   <title>{frontmatter.title}</title>
 
-  <link rel="canonical" href={`${import.meta.env.SITE}/posts/${slug}/`} />
+  <link rel="canonical" href={`${import.meta.env.SITE}/posts/${slug}`} />
 
   <meta property="og:title" content={frontmatter.title} />
   <meta property="og:description" content="description" />
   <meta
     property="og:url"
-    content={`${import.meta.env.SITE}/posts/${slug}/`}
+    content={`${import.meta.env.SITE}/posts/${slug}`}
   />
   <meta
     property="og:image"
