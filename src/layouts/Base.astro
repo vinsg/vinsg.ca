@@ -1,25 +1,19 @@
 ---
+import BaseHead from '@components/BaseHead.astro';
 import NavBar from '../components/NavBar.astro';
 
 export interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, description } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="The personnal website of Vincent Salamanca, a full stack software developer specialized in Kotlin."/>
-		<meta property="og:image" content="/assets/og/image.svg" />
-		<meta property="og:image:width" content="1200" />
-  		<meta property="og:image:height" content="630" />
-		<title>{title}</title>
+		<BaseHead title={title} description={description} />
 	</head>
 	<body class='bg-slate-900 text-gray-100'>
 		<NavBar />

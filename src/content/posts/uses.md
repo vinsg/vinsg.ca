@@ -1,7 +1,8 @@
 ---
 title: "What I use"
-author: "Vincent Salamanca-Gagnon"
-date: 2024-02-05
+author: "Vincent Salamanca"
+description: "List of the various things I use."
+pubDate: 2024-02-05
 tags: ['Productivity']
 draft: false
 ---

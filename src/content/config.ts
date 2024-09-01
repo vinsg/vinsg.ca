@@ -4,8 +4,8 @@ import { z, defineCollection } from "astro:content";
 const postsCollection = defineCollection({
     schema: z.object({
       title: z.string(),
-      date: z.date(),
-      // description: z.string(),
+      pubDate: z.coerce.date(),
+      description: z.string(),
       author: z.string(),
       // image: z.object({
       //   url: z.string(),
