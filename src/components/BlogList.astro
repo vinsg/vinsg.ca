@@ -1,21 +1,41 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "./Section.astro";
-const posts = await getCollection("posts").then((it) => it.filter((post) => !post.data.draft))
-const visible = posts.length > 0
-
+const posts = await getCollection("posts").then((it) =>
+  it.filter((post) => !post.data.draft)
+);
+const visible = posts.length > 0;
 ---
 
 <Section>
-    <h2 class="text-2xl">Posts</h2>
-    { visible ? <ul class="mt-4">
-      {posts.map((post) => <li class="flex flex-wrap items-center gap-x-2">
-        <time {new Date(post.data.date.toDateString())} class="min-w-[120px] text-gray-500">{post.data.date.toDateString()}</time>
-        
-        <a href={"/posts/" + post.slug} class="inline-block cactus-link line-clamp-1 hover:underline">{post.data.title}</a>
-        
-        </li>)}
-    </ul>
-    : <p class="mt-4 text-gray-200">Coming Soon!</p>
-    }
+  <h2 class="text-2xl">Posts</h2>
+  {
+    visible ? (
+      <ul class="mt-4">
+        {posts.map((post) => (
+          <li class="flex flex-wrap items-center gap-x-2">
+            <time
+              datetime={post.data.pubDate.toISOString()}
+              class="min-w-[120px] text-gray-500"
+            >
+              {post.data.pubDate.toLocaleDateString("en-ca", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+
+            <a
+              href={"/posts/" + post.slug}
+              class="inline-block cactus-link line-clamp-1 hover:underline"
+            >
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="mt-4 text-gray-200">Coming Soon!</p>
+    )
+  }
 </Section>
