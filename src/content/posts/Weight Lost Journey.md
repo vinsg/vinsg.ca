@@ -1,14 +1,14 @@
 ---
-title: Lessons Learned from Losing 36 lbs in ...insert weeks...
+title: Lessons Learned from Losing 36 lbs in 11 weeks
 author: Vincent Salamanca
 description: An overview of my weight lost journey and the lessons I learned from it.
-date: 2024-07-29
+pubDate: 2024-07-29
 tags:
   - life
   - health
 draft: true
 ---
-On May 25th, 2024, I embarked on a weight loss journey to lose 36 lb. I accomplished my goal on // insert goal // and this is what I've learned from the experience.
+On May 25th, 2024, I embarked on a weight loss journey to lose 36 lb. I accomplished my goal on the 10th of August 2024 and this is what I've learned from the experience.
 ## Why
 
 - **Improve my physique**:
