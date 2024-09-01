@@ -12,12 +12,13 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
+		stylesheet: '/rss/styles.xsl',
 		items: posts.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
 			author: `${SOCIAL.EMAIL} (Vincent S.-G.)`,
-			link: `/blog/${post.slug}/`,
+			link: `/blog/post/${post.slug}/`,
 			content: sanitizeHtml(parser.render(post.body)),
 		})),
 	});
