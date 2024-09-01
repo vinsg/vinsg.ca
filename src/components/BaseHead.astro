@@ -40,3 +40,11 @@ const { title, description, image = '/og-placeholder.png' } = Astro.props;
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- RSS -->
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title={title}
+    href={new URL("rss.xml", Astro.site)}
+/>
