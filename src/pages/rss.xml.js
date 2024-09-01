@@ -17,9 +17,10 @@ export async function GET(context) {
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			author: `${SOCIAL.EMAIL} (Vincent S.-G.)`,
 			link: `/blog/post/${post.slug}/`,
 			content: sanitizeHtml(parser.render(post.body)),
 		})),
+		// todo add post language
+		customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 	});
 }
