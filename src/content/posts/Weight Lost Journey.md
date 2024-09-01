@@ -1,6 +1,6 @@
 ---
 title: Lessons Learned from Losing 36 lbs in 11 weeks
-author: Vincent Salamanca
+author: Vincent S.-G.
 description: An overview of my weight lost journey and the lessons I learned from it.
 pubDate: 2024-07-29
 tags:

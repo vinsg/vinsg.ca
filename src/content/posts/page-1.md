@@ -1,6 +1,6 @@
 ---
 title: "Astro v1 Launch!"
-author: "Vincent Salamanca"
+author: "Vincent S.-G."
 description: "Simple test page"
 pubDate: 2022-07-01
 tags: ['Kotlin', 'Astro', 'Ktor']

@@ -1,6 +1,6 @@
 ---
 title: "What I use"
-author: "Vincent Salamanca"
+author: "Vincent S.-G."
 description: "List of the various things I use."
 pubDate: 2024-02-05
 tags: ['Productivity']
@@ -47,7 +47,7 @@ This is a non-exhaustive list of everything I currently use.
 ## Desk Setup
 - [Roost Stand](https://www.therooststand.com/) to elevate my laptop.
 - Apple Magic Keyboard.
-- Apple Magic Mouse.
+- Apple Trackpad.
 
 ## Minimalist Travel
 - [Aer Travel Pack 3](https://aersf.com/products/travel-pack-3) is the best travel backpack.

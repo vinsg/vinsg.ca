@@ -1,6 +1,6 @@
 ---
 title: Authoring Astro with Obsidian
-author: Vincent Salamanca
+author: Vincent S.-G.
 description: A simple guide to author content for an Astro site using Obsidian.
 pubDate: 2024-07-29
 tags: []
