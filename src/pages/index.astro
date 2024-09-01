@@ -4,11 +4,12 @@ import BlogList from "../components/BlogList.astro";
 import Hero from "../components/Hero.astro";
 import ProjectList from "../components/ProjectList.astro";
 import SlidesList from "../components/SlidesList.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <Base
-  title="Vincent's Website"
-  description="Personal website of Vincent Salamanca, UI engineer from Montreal Canada"
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
 >
   <Hero />
   <BlogList />
