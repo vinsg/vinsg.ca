@@ -10,26 +10,16 @@ const { frontmatter, slug } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <BaseHead title={frontmatter.title} description={frontmatter.description} />
-  <meta
-    property="og:url"
-    content={`${import.meta.env.SITE}/posts/${slug}`}
-  />
-  <meta
-    property="og:image"
-    content={`${import.meta.env.SITE}/posts/${slug}/og.png`}
-  />
+  <BaseHead title={frontmatter.title} description={frontmatter.description} image={`${import.meta.env.SITE}/posts/${slug}/og.png`}/>
   <meta property="og:type" content="article" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={frontmatter.title} />
-  <meta property="twitter:description" content="description" />
+  <meta property="twitter:description" content={frontmatter.description} />
   <meta
     name="twitter:image"
     content={`${import.meta.env.SITE}/posts/${slug}/og.png`}
   />
-
-  <meta name="description" content="description" />
 </head>
 
   <body class="bg-slate-900 text-gray-100">
