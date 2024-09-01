@@ -15,6 +15,7 @@
     "@catppuccin/highlightjs": "^0.1.2",
     "@tailwindcss/typography": "^0.5.7",
     "@types/reveal.js": "^4.4.2",
+    "@types/sanitize-html": "^2.13.0",
     "astro": "^4.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -27,7 +28,9 @@
     "@types/react": "^18.0.17",
     "@vercel/og": "^0.6.2",
     "astro-icon": "^1.1.1",
+    "markdown-it": "^14.1.0",
     "reveal.js": "^4.5.0",
+    "sanitize-html": "^2.13.0",
     "satori": "^0.10.14",
     "satori-html": "^0.3.2"
   }
