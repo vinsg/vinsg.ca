@@ -12,7 +12,8 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		stylesheet: '/rss/styles.xsl',
+		xmlns: { dc: "http://purl.org/dc/elements/1.1/" },
+		// stylesheet: '/rss/styles.xsl',
 		items: posts.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
