@@ -1,5 +1,5 @@
 export const SITE_TITLE = "Beyond Triangles";
-export const SITE_DESCRIPTION = "The blog of Vincent Salamanca, UI engineer from Montreal Canada";
+export const SITE_DESCRIPTION = "Vincent's blog on software, UI, productivity and other interesting things.";
 export const SOCIAL = {
     EMAIL: "contact@vinsg.ca"
 }
