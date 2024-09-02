@@ -17,7 +17,8 @@ export async function GET(context) {
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			link: `/blog/post/${post.slug}/`,
+			// todo probably should automate this as it may break in the future.
+			link: `/blog/posts/${post.slug}/`,
 			content: sanitizeHtml(parser.render(post.body)),
 		})),
 		// todo add post language
