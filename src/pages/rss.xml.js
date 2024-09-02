@@ -16,7 +16,10 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		xmlns: { dc: "http://purl.org/dc/elements/1.1/" },
+		xmlns: {
+			dc: "http://purl.org/dc/elements/1.1/",
+			atom: "http://www.w3.org/2005/Atom"
+		},
 		// stylesheet: '/rss/styles.xsl',
 		items: posts.map((post) => ({
 			title: post.data.title,
@@ -27,7 +30,8 @@ export async function GET(context) {
 			content: sanitizeHtml(parser.render(post.body)),
 			customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 		})),
-		customData: `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`
+		customData: `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+		<atom:link href="${new URL("rss.xml", context.site)}" rel="self" type="application/rss+xml" />`
 		// todo add post language
 	});
 }
