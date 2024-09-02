@@ -20,8 +20,8 @@ export async function GET(context) {
 			// todo probably should automate this as it may break in the future.
 			link: `/blog/posts/${post.slug}/`,
 			content: sanitizeHtml(parser.render(post.body)),
+			customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 		})),
 		// todo add post language
-		customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 	});
 }
