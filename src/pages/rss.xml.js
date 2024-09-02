@@ -5,6 +5,10 @@ import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
+/*
+RSS specs : https://www.rssboard.org/rss-profile
+*/
+
 export async function GET(context) {
 	const posts = await getCollection('posts', ({ data }) => { return data.draft !== true; }
 	);
@@ -23,6 +27,7 @@ export async function GET(context) {
 			content: sanitizeHtml(parser.render(post.body)),
 			customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 		})),
+		customData: `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`
 		// todo add post language
 	});
 }
