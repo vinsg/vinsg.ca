@@ -1,52 +1,55 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
-import BlogTag, { ColorTags } from "../components/BlogTag.astro";
 import NavBar from "../components/NavBar.astro";
-import Section from "../components/Section.astro";
 
-const { frontmatter, slug } = Astro.props;
+const { frontmatter, slug, readingTime } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <BaseHead title={frontmatter.title} description={frontmatter.description} image={`${import.meta.env.SITE}/posts/${slug}/og.png`}/>
-  <meta property="og:type" content="article" />
+  <head>
+    <BaseHead
+      title={frontmatter.title}
+      description={frontmatter.description}
+      image={`${import.meta.env.SITE}/posts/${slug}/og.png`}
+    />
+    <meta property="og:type" content="article" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={frontmatter.title} />
-  <meta property="twitter:description" content={frontmatter.description} />
-  <meta
-    name="twitter:image"
-    content={`${import.meta.env.SITE}/posts/${slug}/og.png`}
-  />
-</head>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={frontmatter.title} />
+    <meta property="twitter:description" content={frontmatter.description} />
+    <meta
+      name="twitter:image"
+      content={`${import.meta.env.SITE}/posts/${slug}/og.png`}
+    />
+  </head>
 
   <body class="bg-slate-900 text-gray-100">
     <NavBar />
-    <Section>
-      <h1 class="text-center text-3xl font-bold">{frontmatter.title}</h1>
-      <div class="mt-2 text-center text-sm text-gray-400">
-        By {frontmatter.author} on {
+    <div class="max-w-prose mx-auto px-3 py-6 space-y-10">
+      <p class="text-center text-xl uppercase font-bold text-gray-400">
+        {
           frontmatter.pubDate.toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })
-        }
-      </div>
-      <ul class="flex flex-row justify-center pt-3 gap-4">
-        {
-          frontmatter.tags.map((item) => (
-            <BlogTag id={item} text={item} color={ColorTags.EMERALD} />
-          ))
-        }
-      </ul>
-      <div
-        class="prose prose-invert mt-8 prose-img:rounded-lg mx-auto max-w-prose"
-      >
+        } ~ {readingTime}
+      </p>
+      <h1 class="text-center text-6xl font-bold">{frontmatter.title}</h1>
+
+      <hr
+        class="p-0 border-0 h-[10px] my-[40px] w-1/2 center mx-auto"
+        style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg width=%2720%27 height=%2710%27 viewBox=%270%200%2020%2010%27 xmlns=%27http://www.w3.org/2000/svg%27 fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 stroke-miterlimit=%2710%27%3e%3cpath fill=%27none%27 d=%27M0%200h20v10H0z%27/%3e%3cclipPath id=%27a%27%3e%3cpath d=%27M0%200h20v10H0z%27/%3e%3c/clipPath%3e%3cg clip-path=%27url(%23a)%27%3e%3cpath d=%27M20%207.384c-4.999-.001-5-4.768-9.999-4.768C5%202.616%205%207.384%200%207.384%27 fill=%27none%27 stroke-width=%273%27 stroke=%27%23548E9B%27/%3e%3c/g%3e%3c/svg%3e'); background-position: center;"
+      />
+
+      <div class="prose prose-invert mt-8 prose-img:rounded-lg">
         <slot />
       </div>
-    </Section>
+      <hr>
+      <p class="text-center mx-auto pb-10">
+        by <a  href=https://x.com/vinsg_>@vinsg_</a>
+      </p>
+    </div>
   </body>
 </html>

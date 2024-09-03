@@ -1,17 +1,26 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseBlog from '../../layouts/BaseBlog.astro';
+import { getCollection } from "astro:content";
+import BaseBlog from "../../layouts/BaseBlog.astro";
+import readingTime from "reading-time";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getCollection("posts", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<BaseBlog frontmatter={entry.data} slug={entry.slug}>
+
+<BaseBlog
+  frontmatter={entry.data}
+  slug={entry.slug}
+  readingTime={readingTime(entry.body).text}
+>
   <Content />
 </BaseBlog>

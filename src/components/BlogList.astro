@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "./Section.astro";
-const posts = await getCollection("posts").then((it) =>
-  it.filter((post) => !post.data.draft)
-);
+const posts = await getCollection("posts", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
 const visible = posts.length > 0;
 ---
 
