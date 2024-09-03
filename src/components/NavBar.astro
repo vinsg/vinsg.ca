@@ -1,16 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 import Section from "./Section.astro";
+console.log(import.meta.env.SITE);
+
 ---
 
 <Section>
-  <div
-    class="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between"
-  >
-    <a href="/">◣</a>
-
     <nav>
-      <ul class="flex flex-row justify-center items-center gap-x-5 font-medium text-gray-200">
+      <ul class="flex flex-row gap-y-3 my-2 flex-wrap items-center gap-x-5 font-medium text-gray-200">
+        <li class="grow">
+          <a href="/">◣</a>
+        </li>
         <li>
           <a class="hover:underline hover:text-purple-400" href="/posts/uses"
             >Uses</a>
@@ -45,5 +45,4 @@ import Section from "./Section.astro";
         </li>
       </ul>
     </nav>
-  </div>
 </Section>
