@@ -12,5 +12,8 @@ export default defineConfig({
     defaultLocale: "en",
     locales: ["fr", "en"]
   },
-  site: "https://vinsg.ca"
+  site: "https://vinsg.ca",
+  redirects: {
+    '/uses': '/posts/uses'
+  }
 });
