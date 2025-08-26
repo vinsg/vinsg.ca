@@ -20,18 +20,17 @@ export async function GET(context) {
 			dc: "http://purl.org/dc/elements/1.1/",
 			atom: "http://www.w3.org/2005/Atom"
 		},
-		// stylesheet: '/rss/styles.xsl',
+		stylesheet: '/rss/styles.xsl',
 		items: posts.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			// todo probably should automate this as it may break in the future.
-			link: `/blog/posts/${post.slug}/`,
+			link: `/posts/${post.id}/`,
 			content: sanitizeHtml(parser.render(post.body)),
 			customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 		})),
 		customData: `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-		<atom:link href="${new URL("rss.xml", context.site)}" rel="self" type="application/rss+xml" />`
-		// todo add post language
+		<atom:link href="${new URL("rss.xml", context.site)}" rel="self" type="application/rss+xml" />
+		<language>en</language>`
 	});
 }
