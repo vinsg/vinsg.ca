@@ -1,7 +1,7 @@
 ---
 title: Local LLM
 description: Running Local Code LLM for no profit.
-date: 2024-02-12
+pubDate: 2024-02-12
 draft: true
 ---
 

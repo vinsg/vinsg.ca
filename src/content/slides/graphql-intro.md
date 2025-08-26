@@ -1,7 +1,7 @@
 ---
 title: Graphql introduction
 description: Introduction to Graphql and Spring Boot support.
-date: 2023-07-01
+pubDate: 2023-07-01
 draft: false
 ---
 

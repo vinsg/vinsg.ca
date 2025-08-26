@@ -29,7 +29,7 @@ const slidesCollection = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    date: z.date(),
+    pubDate: z.coerce.date(),
     description: z.string(),
     draft: z.boolean().optional()
   })

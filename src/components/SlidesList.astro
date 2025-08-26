@@ -10,9 +10,9 @@ const visible = slides.length > 0
     <h2 class="text-2xl">Slides</h2>
     { visible ? <ul class="mt-4">
       {slides.map((slide) => <li class="flex flex-wrap items-center gap-x-2">
-        <time {new Date(slide.data.date.toDateString())} class="min-w-[120px] text-gray-500">{slide.data.date.toDateString()}</time>
+        <time {new Date(slide.data.pubDate.toDateString())} class="min-w-[120px] text-gray-500">{slide.data.pubDate.toDateString()}</time>
         
-        <a href={"/slides/" + slide.slug} class="inline-block cactus-link line-clamp-1 hover:underline">{slide.data.title}</a>
+        <a href={"/slides/" + slide.id} class="inline-block cactus-link line-clamp-1 hover:underline">{slide.data.title}</a>
         
         </li>)}
     </ul>
