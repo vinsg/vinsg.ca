@@ -1,7 +1,7 @@
 ---
 title: Using ressources
 description: test lecture for reference.
-date: 2022-07-01
+pubDate: 2022-07-01
 draft: true
 ---
 ## Handling resources with Use
