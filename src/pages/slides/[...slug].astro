@@ -6,7 +6,7 @@ import MarkdownSlide from "../../components/MarkdownSlide.astro";
 export async function getStaticPaths() {
   const slidesEntries = await getCollection("slides");
   return slidesEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }

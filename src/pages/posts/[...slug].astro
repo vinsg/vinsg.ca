@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseBlog from "../../layouts/BaseBlog.astro";
 import readingTime from "reading-time";
 
@@ -8,18 +8,18 @@ export async function getStaticPaths() {
     return import.meta.env.PROD ? data.draft !== true : true;
   });
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <BaseBlog
   frontmatter={entry.data}
-  slug={entry.slug}
+  slug={entry.id}
   readingTime={readingTime(entry.body).text}
 >
   <Content />
