@@ -1,14 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "./Section.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const posts = await getCollection("posts", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 const visible = posts.length > 0;
+
+const basePath = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <div class="mx-auto max-w-screen-lg px-3 py-6">
-  <h2 class="text-2xl">Posts</h2>
+  <h2 class="text-2xl">{t('posts.title')}</h2>
   {
     visible ? (
       <ul class="mt-4">
@@ -18,7 +25,7 @@ const visible = posts.length > 0;
               datetime={post.data.pubDate.toISOString()}
               class="min-w-[120px] text-gray-500"
             >
-              {post.data.pubDate.toLocaleDateString("en-ca", {
+              {post.data.pubDate.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
@@ -26,7 +33,7 @@ const visible = posts.length > 0;
             </time>
 
             <a
-              href={"/posts/" + post.id}
+              href={`${basePath}/posts/${post.id}`}
               class="inline-block cactus-link line-clamp-1 hover:underline"
             >
               {post.data.title}
@@ -35,7 +42,7 @@ const visible = posts.length > 0;
         ))}
       </ul>
     ) : (
-      <p class="mt-4 text-gray-200">Coming Soon!</p>
+      <p class="mt-4 text-gray-200">{t('posts.comingSoon')}</p>
     )
   }
 </div>

@@ -1,12 +1,15 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
 import NavBar from "../components/NavBar.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const { frontmatter, slug, readingTime } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <BaseHead
       title={frontmatter.title}
@@ -29,7 +32,7 @@ const { frontmatter, slug, readingTime } = Astro.props;
     <div class="max-w-prose mx-auto px-3 py-6 space-y-10">
       <p class="text-center text-xl uppercase font-bold text-gray-400">
         {
-          frontmatter.pubDate.toLocaleDateString("en-US", {
+          frontmatter.pubDate.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-US', {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -48,7 +51,7 @@ const { frontmatter, slug, readingTime } = Astro.props;
       </div>
       <hr>
       <p class="text-center mx-auto pb-10">
-        by <a  href=https://x.com/vinsg_>@vinsg_</a>
+        {t('blog.by')} <a href="https://x.com/vinsg_">@vinsg_</a>
       </p>
     </div>
   </body>

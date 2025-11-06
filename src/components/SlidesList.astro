@@ -1,21 +1,33 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "./Section.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const slides = await getCollection("slides").then((it) => it.filter((slide) => !slide.data.draft))
 const visible = slides.length > 0
 
+const basePath = lang === 'en' ? '' : `/${lang}`;
 ---
 
 <Section>
-    <h2 class="text-2xl">Slides</h2>
+    <h2 class="text-2xl">{t('slides.title')}</h2>
     { visible ? <ul class="mt-4">
       {slides.map((slide) => <li class="flex flex-wrap items-center gap-x-2">
-        <time {new Date(slide.data.pubDate.toDateString())} class="min-w-[120px] text-gray-500">{slide.data.pubDate.toDateString()}</time>
-        
-        <a href={"/slides/" + slide.id} class="inline-block cactus-link line-clamp-1 hover:underline">{slide.data.title}</a>
-        
+        <time datetime={slide.data.pubDate.toISOString()} class="min-w-[120px] text-gray-500">
+          {slide.data.pubDate.toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
+        </time>
+
+        <a href={`${basePath}/slides/${slide.id}`} class="inline-block cactus-link line-clamp-1 hover:underline">{slide.data.title}</a>
+
         </li>)}
     </ul>
-    : <p class="mt-4 text-gray-200">Coming Soon!</p>
+    : <p class="mt-4 text-gray-200">{t('slides.comingSoon')}</p>
     }
 </Section>

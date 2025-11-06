@@ -1,6 +1,10 @@
 ---
 import Section from "../components/Section.astro";
 import SocialBtn from "./SocialBtn.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section>
@@ -9,16 +13,14 @@ import SocialBtn from "./SocialBtn.astro";
     >
         <div>
             <h1 class="text-2xl font-bold">
-                <>Bonjour,</>
+                <Fragment set:html={t('hero.greeting')} />
             </h1>
+            <p class="mt-6 text-l leading-7" set:html={t('hero.intro')} />
             <p class="mt-6 text-l leading-7">
-                My name is Vincent, <em>aka vinsg</em>. I'm an Android developer passionate about building great user interfaces and exploring interaction design. I speak English and French fluently.
+                {t('hero.location')}
             </p>
             <p class="mt-6 text-l leading-7">
-                I currently live and work in Montréal, Canada.
-            </p>
-            <p class="mt-6 text-l leading-7">
-                Feel free to take a look around my blog or contact me on <a class="hover:underline hover:text-purple-400" href="https://x.com/vinsg_">X</a>
+                {t('hero.contact')} <a class="hover:underline hover:text-purple-400" href="https://x.com/vinsg_">X</a>
             </p>
         </div>
     </div>

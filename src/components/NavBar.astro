@@ -1,6 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import Section from "./Section.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const basePath = lang === 'en' ? '' : `/${lang}`;
 console.log(import.meta.env.SITE);
 
 ---
@@ -9,11 +15,14 @@ console.log(import.meta.env.SITE);
     <nav>
       <ul class="flex flex-row gap-y-3 my-2 flex-wrap items-center gap-x-5 font-medium text-gray-200">
         <li class="grow">
-          <a href="/">◣</a>
+          <a href={basePath || "/"}> ◣</a>
         </li>
         <li>
-          <a class="hover:underline hover:text-purple-400" href="/posts/uses"
-            >Uses</a>
+          <LanguageSwitcher />
+        </li>
+        <li>
+          <a class="hover:underline hover:text-purple-400" href={`${basePath}/posts/uses`}
+            >{t('nav.uses')}</a>
         </li>
         <li>
           <a href="https://github.com/vinsg"

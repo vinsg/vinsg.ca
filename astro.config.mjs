@@ -10,10 +10,14 @@ export default defineConfig({
   integrations: [tailwind(), react(), icon(), sitemap()],
   i18n: {
     defaultLocale: "en",
-    locales: ["fr", "en"]
+    locales: ["en", "fr"],
+    routing: {
+      prefixDefaultLocale: false
+    }
   },
   site: "https://vinsg.ca",
   redirects: {
-    '/uses': '/posts/uses'
+    '/uses': '/posts/uses',
+    '/fr/uses': '/fr/posts/uses'
   }
 });

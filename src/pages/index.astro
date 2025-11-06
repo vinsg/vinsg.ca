@@ -4,12 +4,17 @@ import BlogList from "../components/BlogList.astro";
 import Hero from "../components/Hero.astro";
 import ProjectList from "../components/ProjectList.astro";
 import SlidesList from "../components/SlidesList.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getSiteTitle, getSiteDescription } from '../consts';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const siteTitle = getSiteTitle(lang);
+const siteDescription = getSiteDescription(lang);
 ---
 
 <Base
-  title={SITE_TITLE}
-  description={SITE_DESCRIPTION}
+  title={siteTitle}
+  description={siteDescription}
 >
   <Hero />
   <BlogList />

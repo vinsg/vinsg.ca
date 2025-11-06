@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl, removeLocaleFromPath, getLocalizedPath } from '../i18n/utils';
+import { languages } from '../i18n/translations';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = removeLocaleFromPath(Astro.url.pathname);
+---
+
+<div class="flex gap-2 items-center">
+  {Object.entries(languages).map(([lang, label]) => {
+    const isActive = lang === currentLang;
+    const href = lang === 'en' ? currentPath : getLocalizedPath(currentPath, lang as keyof typeof languages);
+
+    return (
+      <a
+        href={href}
+        class:list={[
+          "text-sm font-medium transition-colors",
+          isActive
+            ? "text-purple-400 font-bold"
+            : "text-gray-400 hover:text-gray-200"
+        ]}
+        aria-current={isActive ? "page" : undefined}
+      >
+        {lang.toUpperCase()}
+      </a>
+    );
+  })}
+</div>
