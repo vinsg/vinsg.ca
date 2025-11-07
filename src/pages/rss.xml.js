@@ -26,6 +26,7 @@ export async function GET(context) {
 			pubDate: post.data.pubDate,
 			description: post.data.description,
 			link: `/posts/${post.id}/`,
+			guid: new URL(`/posts/${post.id}/`, context.site).href,
 			content: sanitizeHtml(parser.render(post.body)),
 			customData: "<dc:creator><![CDATA[Vincent S.-G.]]></dc:creator>"
 		})),
