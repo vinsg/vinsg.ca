@@ -1,41 +1,131 @@
 ---
 import { getCollection } from "astro:content";
-import Section from "./Section.astro";
-const posts = await getCollection("posts", ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
-});
-const visible = posts.length > 0;
+
+const isDev = !import.meta.env.PROD;
+
+const posts = await getCollection("posts", ({ data }) =>
+  isDev ? true : data.draft !== true
+);
+
+const notes = await getCollection("notes", ({ data }) =>
+  isDev ? true : data.draft !== true
+);
+
+type FeedPost = { kind: "post"; id: string; pubDate: Date; title: string };
+type FeedNote = {
+  kind: "note";
+  id: string;
+  pubDate: Date;
+  type: "note" | "link" | "quote";
+  url?: string;
+  quote?: string;
+  source?: string;
+  body: string;
+};
+type FeedItem = FeedPost | FeedNote;
+
+const feed: FeedItem[] = [
+  ...posts.map((p) => ({
+    kind: "post" as const,
+    id: p.id,
+    pubDate: p.data.pubDate,
+    title: p.data.title,
+  })),
+  ...notes.map((n) => ({
+    kind: "note" as const,
+    id: n.id,
+    pubDate: n.data.pubDate,
+    type: n.data.type,
+    url: n.data.url,
+    quote: n.data.quote,
+    source: n.data.source,
+    body: n.body ?? "",
+  })),
+].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString("en-ca", { year: "numeric", month: "short", day: "numeric" });
 ---
 
 <div class="mx-auto max-w-screen-lg px-3 py-6">
-  <h2 class="text-2xl">Posts</h2>
-  {
-    visible ? (
-      <ul class="mt-4">
-        {posts.map((post) => (
-          <li class="flex flex-wrap items-center gap-x-2 my-2">
-            <time
-              datetime={post.data.pubDate.toISOString()}
-              class="min-w-[120px] text-gray-500"
-            >
-              {post.data.pubDate.toLocaleDateString("en-ca", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
+  <h2 class="text-2xl">Posts & Notes</h2>
+  {feed.length === 0 ? (
+    <p class="mt-4 text-gray-200">Coming Soon!</p>
+  ) : (
+    <ul class="mt-4 space-y-4">
+      {feed.map((item) => (
+        <li>
+          {item.kind === "post" && (
+            <div class="flex flex-wrap items-center gap-x-2">
+              <time
+                datetime={item.pubDate.toISOString()}
+                class="min-w-[120px] text-gray-500"
+              >
+                {formatDate(item.pubDate)}
+              </time>
+              <a
+                href={"/posts/" + item.id}
+                class="inline-block cactus-link line-clamp-1 hover:underline"
+              >
+                {item.title}
+              </a>
+            </div>
+          )}
 
-            <a
-              href={"/posts/" + post.id}
-              class="inline-block cactus-link line-clamp-1 hover:underline"
-            >
-              {post.data.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p class="mt-4 text-gray-200">Coming Soon!</p>
-    )
-  }
+          {item.kind === "note" && item.type === "link" && (
+            <div>
+              <div class="flex flex-wrap items-center gap-x-2">
+                <time
+                  datetime={item.pubDate.toISOString()}
+                  class="min-w-[120px] text-gray-500 text-sm"
+                >
+                  {formatDate(item.pubDate)}
+                </time>
+                <a
+                  href={item.url}
+                  class="inline-block cactus-link hover:underline font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  → {item.source ?? item.url}
+                </a>
+              </div>
+              {item.body && (
+                <p class="mt-1 ml-[128px] text-sm text-gray-400">{item.body.trim()}</p>
+              )}
+            </div>
+          )}
+
+          {item.kind === "note" && item.type === "quote" && (
+            <div>
+              <time
+                datetime={item.pubDate.toISOString()}
+                class="text-gray-500 text-sm"
+              >
+                {formatDate(item.pubDate)}
+              </time>
+              <blockquote class="mt-1 border-l-2 border-gray-500 pl-4 italic text-gray-300">
+                {item.quote ?? item.body.trim()}
+                {item.source && (
+                  <footer class="mt-1 text-sm not-italic text-gray-500">— {item.source}</footer>
+                )}
+              </blockquote>
+            </div>
+          )}
+
+          {item.kind === "note" && item.type === "note" && (
+            <div>
+              <time
+                datetime={item.pubDate.toISOString()}
+                class="text-gray-500 text-sm"
+              >
+                {formatDate(item.pubDate)}
+              </time>
+              <p class="mt-1 text-gray-300 text-sm">{item.body.trim()}</p>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  )}
 </div>
