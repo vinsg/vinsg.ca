@@ -11,7 +11,7 @@ const notes = await getCollection("notes", ({ data }) =>
   isDev ? true : data.draft !== true
 );
 
-type FeedPost = { kind: "post"; id: string; pubDate: Date; title: string };
+type FeedPost = { kind: "post"; id: string; pubDate: Date; title: string; description?: string };
 type FeedNote = {
   kind: "note";
   id: string;
@@ -30,6 +30,7 @@ const feed: FeedItem[] = [
     id: p.id,
     pubDate: p.data.pubDate,
     title: p.data.title,
+    description: p.data.description,
   })),
   ...notes.map((n) => ({
     kind: "note" as const,
@@ -47,43 +48,45 @@ const formatDate = (d: Date) =>
   d.toLocaleDateString("en-ca", { year: "numeric", month: "short", day: "numeric" });
 ---
 
-<div class="mx-auto max-w-screen-lg px-3 py-6">
-  <h2 class="text-2xl">Posts & Notes</h2>
+<div class="mx-auto max-w-2xl px-4 py-4">
+  <h2 class="text-lg font-semibold mb-6">Posts</h2>
   {feed.length === 0 ? (
-    <p class="mt-4 text-gray-200">Coming Soon!</p>
+    <p class="text-gray-500">Coming Soon!</p>
   ) : (
-    <ul class="mt-4 space-y-4">
+    <ul class="space-y-5">
       {feed.map((item) => (
         <li>
           {item.kind === "post" && (
-            <div class="flex flex-wrap items-center gap-x-2">
-              <time
-                datetime={item.pubDate.toISOString()}
-                class="min-w-[120px] text-gray-500"
-              >
-                {formatDate(item.pubDate)}
-              </time>
-              <a
-                href={"/posts/" + item.id}
-                class="inline-block cactus-link line-clamp-1 hover:underline"
-              >
-                {item.title}
-              </a>
+            <div>
+              <div class="flex items-baseline gap-x-6">
+                <time
+                  datetime={item.pubDate.toISOString()}
+                  class="text-sm text-gray-500 shrink-0 w-28"
+                >
+                  {formatDate(item.pubDate)}
+                </time>
+                <a href={"/posts/" + item.id} class="hover:underline text-gray-100">
+                  {item.title}
+                </a>
+              </div>
+              {item.description && (
+                <p class="mt-0.5 ml-[136px] text-sm italic text-gray-500">"{item.description}"</p>
+              )}
             </div>
           )}
 
           {item.kind === "note" && item.type === "link" && (
             <div>
-              <div class="flex flex-wrap items-center gap-x-2">
+              <div class="flex items-baseline gap-x-6">
                 <time
                   datetime={item.pubDate.toISOString()}
-                  class="min-w-[120px] text-gray-500 text-sm"
+                  class="text-sm text-gray-500 shrink-0 w-28"
                 >
                   {formatDate(item.pubDate)}
                 </time>
                 <a
                   href={item.url}
-                  class="inline-block cactus-link hover:underline font-medium"
+                  class="hover:underline text-gray-100"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -91,37 +94,37 @@ const formatDate = (d: Date) =>
                 </a>
               </div>
               {item.body && (
-                <p class="mt-1 ml-[128px] text-sm text-gray-400">{item.body.trim()}</p>
+                <p class="mt-0.5 ml-[136px] text-sm italic text-gray-500">{item.body.trim()}</p>
               )}
             </div>
           )}
 
           {item.kind === "note" && item.type === "quote" && (
-            <div>
+            <div class="flex items-baseline gap-x-6">
               <time
                 datetime={item.pubDate.toISOString()}
-                class="text-gray-500 text-sm"
+                class="text-sm text-gray-500 shrink-0 w-28"
               >
                 {formatDate(item.pubDate)}
               </time>
-              <blockquote class="mt-1 border-l-2 border-gray-500 pl-4 italic text-gray-300">
+              <blockquote class="border-l-2 border-gray-600 pl-3 italic text-gray-400 text-sm">
                 {item.quote ?? item.body.trim()}
                 {item.source && (
-                  <footer class="mt-1 text-sm not-italic text-gray-500">— {item.source}</footer>
+                  <footer class="mt-0.5 not-italic text-gray-500">— {item.source}</footer>
                 )}
               </blockquote>
             </div>
           )}
 
           {item.kind === "note" && item.type === "note" && (
-            <div>
+            <div class="flex items-baseline gap-x-6">
               <time
                 datetime={item.pubDate.toISOString()}
-                class="text-gray-500 text-sm"
+                class="text-sm text-gray-500 shrink-0 w-28"
               >
                 {formatDate(item.pubDate)}
               </time>
-              <p class="mt-1 text-gray-300 text-sm">{item.body.trim()}</p>
+              <p class="text-sm text-gray-300">{item.body.trim()}</p>
             </div>
           )}
         </li>

@@ -1,48 +1,16 @@
 ---
-import { Icon } from "astro-icon/components";
-import Section from "./Section.astro";
-console.log(import.meta.env.SITE);
-
 ---
 
-<Section>
-    <nav>
-      <ul class="flex flex-row gap-y-3 my-2 flex-wrap items-center gap-x-5 font-medium text-gray-200">
-        <li class="grow">
-          <a href="/">◣</a>
-        </li>
-        <li>
-          <a class="hover:underline hover:text-purple-400" href="/posts/uses"
-            >Uses</a>
-        </li>
-        <li>
-          <a href="https://github.com/vinsg"
-            ><Icon
-              name={"ion:logo-github"}
-              class="fill-white h-6 w-6 hover:text-purple-400"
-            /></a>
-        </li>
-        <li>
-          <a href="mailto:contact@vinsg.ca"
-            ><Icon
-              name={"ion:email"}
-              class="fill-white h-6 w-6 hover:text-purple-400"
-            /></a>
-        </li>
-        <li>
-          <a href="https://x.com/vinsg_"
-            ><Icon
-              name={"ion:logo-x"}
-              class="fill-white h-5 w-5 hover:text-purple-400"
-            /></a>
-        </li>
-        <li>
-          <a href={new URL("rss.xml", Astro.site)}
-            ><Icon
-              name={"ion:logo-rss"}
-              class="fill-white h-6 w-6 hover:text-purple-400"
-            /></a>
-        </li>
-      </ul>
-    </nav>
-</Section>
+<header class="mx-auto max-w-2xl px-4 py-6">
+  <nav class="flex items-center gap-x-6">
+    <a href="/" class="flex items-center gap-x-2 font-semibold text-gray-100 no-underline">
+      <span class="text-xl">◣</span>
+      <span>vinsg</span>
+    </a>
+    <span class="text-gray-600">|</span>
+    <a href="/" class="text-gray-400 hover:text-gray-100 text-sm">Home</a>
+    <a href="/posts/uses" class="text-gray-400 hover:text-gray-100 text-sm">Uses</a>
+    <a href="https://github.com/vinsg" class="text-gray-400 hover:text-gray-100 text-sm">GitHub</a>
+    <a href="/rss.xml" class="text-gray-400 hover:text-gray-100 text-sm">RSS</a>
+  </nav>
+</header>
