@@ -44,91 +44,84 @@ const feed: FeedItem[] = [
   })),
 ].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
-const formatDate = (d: Date) =>
-  d.toLocaleDateString("en-ca", { year: "numeric", month: "short", day: "numeric" });
+// Group feed items by date (YYYY-MM-DD)
+const grouped = feed.reduce<{ date: string; displayDate: string; items: FeedItem[] }[]>(
+  (acc, item) => {
+    const key = item.pubDate.toISOString().slice(0, 10);
+    const display = item.pubDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const group = acc.find((g) => g.date === key);
+    if (group) {
+      group.items.push(item);
+    } else {
+      acc.push({ date: key, displayDate: display, items: [item] });
+    }
+    return acc;
+  },
+  []
+);
 ---
 
 <div class="mx-auto max-w-2xl px-4 py-4">
-  <h2 class="text-lg font-semibold mb-6">Posts</h2>
-  {feed.length === 0 ? (
+  {grouped.length === 0 ? (
     <p class="text-gray-500">Coming Soon!</p>
   ) : (
-    <ul class="space-y-5">
-      {feed.map((item) => (
-        <li>
-          {item.kind === "post" && (
-            <div>
-              <div class="flex items-baseline gap-x-6">
-                <time
-                  datetime={item.pubDate.toISOString()}
-                  class="text-sm text-gray-500 shrink-0 w-28"
-                >
-                  {formatDate(item.pubDate)}
-                </time>
-                <a href={"/posts/" + item.id} class="hover:underline text-gray-100">
-                  {item.title}
-                </a>
-              </div>
-              {item.description && (
-                <p class="mt-0.5 ml-[136px] text-sm italic text-gray-500">"{item.description}"</p>
-              )}
-            </div>
-          )}
-
-          {item.kind === "note" && item.type === "link" && (
-            <div>
-              <div class="flex items-baseline gap-x-6">
-                <time
-                  datetime={item.pubDate.toISOString()}
-                  class="text-sm text-gray-500 shrink-0 w-28"
-                >
-                  {formatDate(item.pubDate)}
-                </time>
-                <a
-                  href={item.url}
-                  class="hover:underline text-gray-100"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  → {item.source ?? item.url}
-                </a>
-              </div>
-              {item.body && (
-                <p class="mt-0.5 ml-[136px] text-sm italic text-gray-500">{item.body.trim()}</p>
-              )}
-            </div>
-          )}
-
-          {item.kind === "note" && item.type === "quote" && (
-            <div class="flex items-baseline gap-x-6">
-              <time
-                datetime={item.pubDate.toISOString()}
-                class="text-sm text-gray-500 shrink-0 w-28"
-              >
-                {formatDate(item.pubDate)}
-              </time>
-              <blockquote class="border-l-2 border-gray-600 pl-3 italic text-gray-400 text-sm">
-                {item.quote ?? item.body.trim()}
-                {item.source && (
-                  <footer class="mt-0.5 not-italic text-gray-500">— {item.source}</footer>
+    <div class="space-y-10">
+      {grouped.map(({ displayDate, items }) => (
+        <section>
+          <h2 class="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide">
+            {displayDate}
+          </h2>
+          <ul class="space-y-5">
+            {items.map((item) => (
+              <li>
+                {item.kind === "post" && (
+                  <div>
+                    <a href={"/posts/" + item.id} class="hover:underline font-medium text-gray-100">
+                      {item.title}
+                    </a>
+                    {item.description && (
+                      <p class="mt-1 text-sm italic text-gray-500">"{item.description}"</p>
+                    )}
+                  </div>
                 )}
-              </blockquote>
-            </div>
-          )}
 
-          {item.kind === "note" && item.type === "note" && (
-            <div class="flex items-baseline gap-x-6">
-              <time
-                datetime={item.pubDate.toISOString()}
-                class="text-sm text-gray-500 shrink-0 w-28"
-              >
-                {formatDate(item.pubDate)}
-              </time>
-              <p class="text-sm text-gray-300">{item.body.trim()}</p>
-            </div>
-          )}
-        </li>
+                {item.kind === "note" && item.type === "link" && (
+                  <div>
+                    <a
+                      href={item.url}
+                      class="hover:underline font-medium text-gray-100"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      → {item.source ?? item.url}
+                    </a>
+                    {item.body && (
+                      <p class="mt-1 text-sm text-gray-400">{item.body.trim()}</p>
+                    )}
+                  </div>
+                )}
+
+                {item.kind === "note" && item.type === "quote" && (
+                  <blockquote class="border-l-2 border-gray-600 pl-4 space-y-1">
+                    <p class="italic text-gray-300">{item.quote ?? item.body.trim()}</p>
+                    {item.source && (
+                      <footer class="text-sm text-gray-500">— {item.source}</footer>
+                    )}
+                  </blockquote>
+                )}
+
+                {item.kind === "note" && item.type === "note" && (
+                  <p class="text-sm text-gray-400">{item.body.trim()}</p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
       ))}
-    </ul>
+    </div>
   )}
 </div>
