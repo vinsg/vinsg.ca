@@ -14,42 +14,37 @@ const { frontmatter, slug, readingTime } = Astro.props;
       image={`${import.meta.env.SITE}/posts/${slug}/og.png`}
     />
     <meta property="og:type" content="article" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={frontmatter.title} />
     <meta property="twitter:description" content={frontmatter.description} />
-    <meta
-      name="twitter:image"
-      content={`${import.meta.env.SITE}/posts/${slug}/og.png`}
-    />
+    <meta name="twitter:image" content={`${import.meta.env.SITE}/posts/${slug}/og.png`} />
   </head>
 
   <body class="bg-slate-900 text-gray-100">
     <NavBar />
-    <div class="max-w-prose mx-auto px-3 py-6 space-y-10">
-      <p class="text-center text-xl uppercase font-bold text-gray-400">
-        {
-          frontmatter.pubDate.toLocaleDateString("en-US", {
+    <main class="mx-auto max-w-2xl px-4 py-8">
+      <div class="mb-8">
+        <p class="text-sm text-gray-500 mb-2">
+          {frontmatter.pubDate.toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
-          })
-        } ~ {readingTime}
-      </p>
-      <h1 class="text-center text-6xl font-bold">{frontmatter.title}</h1>
+          })}
+          {readingTime && <span> · {readingTime}</span>}
+        </p>
+        <h1 class="text-3xl font-bold">{frontmatter.title}</h1>
+        {frontmatter.description && (
+          <p class="mt-2 italic text-gray-400">"{frontmatter.description}"</p>
+        )}
+      </div>
 
-      <hr
-        class="p-0 border-0 h-[10px] my-[40px] w-1/2 center mx-auto"
-        style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg width=%2720%27 height=%2710%27 viewBox=%270%200%2020%2010%27 xmlns=%27http://www.w3.org/2000/svg%27 fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 stroke-miterlimit=%2710%27%3e%3cpath fill=%27none%27 d=%27M0%200h20v10H0z%27/%3e%3cclipPath id=%27a%27%3e%3cpath d=%27M0%200h20v10H0z%27/%3e%3c/clipPath%3e%3cg clip-path=%27url(%23a)%27%3e%3cpath d=%27M20%207.384c-4.999-.001-5-4.768-9.999-4.768C5%202.616%205%207.384%200%207.384%27 fill=%27none%27 stroke-width=%273%27 stroke=%27%23548E9B%27/%3e%3c/g%3e%3c/svg%3e'); background-position: center;"
-      />
-
-      <div class="prose prose-invert mt-8 prose-img:rounded-lg">
+      <div class="prose prose-invert prose-img:rounded-lg max-w-none">
         <slot />
       </div>
-      <hr>
-      <p class="text-center mx-auto pb-10">
-        by <a  href=https://x.com/vinsg_>@vinsg_</a>
-      </p>
-    </div>
+
+      <footer class="mt-12 pt-6 border-t border-gray-800 text-sm text-gray-500">
+        by <a href="https://x.com/vinsg_" class="hover:underline">@vinsg_</a>
+      </footer>
+    </main>
   </body>
 </html>
