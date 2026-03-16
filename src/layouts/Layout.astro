@@ -18,11 +18,11 @@ const { title } = Astro.props;
     <slot />
     <script>
       import Reveal from "reveal.js";
-      import RevealMarkdown from "reveal.js/plugin/markdown/markdown.js";
-      import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
-      import RevealZoom from "reveal.js/plugin/zoom/zoom.js";
-      import RevealNotes from "reveal.js/plugin/notes/notes.js";
-      import RevealMath from "reveal.js/plugin/math/math.js";
+      import RevealMarkdown from "reveal.js/plugin/markdown";
+      import RevealHighlight from "reveal.js/plugin/highlight";
+      import RevealZoom from "reveal.js/plugin/zoom";
+      import RevealNotes from "reveal.js/plugin/notes";
+      import RevealMath from "reveal.js/plugin/math";
 
 
       Reveal.initialize({
@@ -44,7 +44,7 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-  @import "reveal.js/dist/reveal.css";
-  @import "reveal.js/dist/theme/dracula.css";
+  @import "reveal.js/reveal.css";
+  @import "reveal.js/theme/dracula.css";
   @import "@catppuccin/highlightjs/css/catppuccin-mocha.css";
 </style>
